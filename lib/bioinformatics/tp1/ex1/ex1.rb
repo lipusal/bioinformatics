@@ -15,7 +15,7 @@ module Bioinformatics
         ff.each_entry do |entry|
           definition = "#{entry.accession} #{entry.definition}"
           sequence = entry.to_biosequence
-          args[:out].write sequence.to_fasta(definition, 60)
+          args[:out].write sequence.to_fasta(definition, 70)
         end
       end
     end
