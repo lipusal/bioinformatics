@@ -2,7 +2,7 @@
 
 require 'optparse'
 require 'stringio'
-require_relative '../ex1/ex1'
+require_relative '../ex1/main'
 
 module Bioinformatics
   module TP1
@@ -26,7 +26,7 @@ module Bioinformatics
           end.parse!
 
           # Convert in/out to files
-          args[:in] = args[:in].nil? ? StringIO.open(Bioinformatics::TP1::Ex1::Ex1.new.run_return) : File.open(args[:in], 'r')
+          args[:in] = args[:in].nil? ? StringIO.open(Bioinformatics::TP1::Ex1::Main.new.run_return) : File.open(args[:in], 'r')
           args[:out] = args[:out].nil? ? STDOUT : File.open(args[:out], 'w')
 
           args
