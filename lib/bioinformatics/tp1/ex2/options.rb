@@ -12,7 +12,7 @@ module Bioinformatics
           args = { in: nil, out: nil, local: false }
 
           OptionParser.new do |parser|
-            parser.banner = 'Usage: ex2.rb [options]'
+            parser.banner = "Usage: ruby #{File.expand_path 'main.rb'} [options]"
 
             parser.on('-i IN', '--in IN', "Input FASTA file. Defaults to calling ex 1 and using its output.") do |x|
               args[:in] = x

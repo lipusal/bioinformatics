@@ -12,7 +12,7 @@ module Bioinformatics
           args = { in: DEFAULT_INPUT_FILE, out: nil }
 
           OptionParser.new do |parser|
-            parser.banner = 'Usage: ex1.rb [options]'
+            parser.banner = "Usage: ruby #{File.expand_path 'main.rb'} [options]"
 
             parser.on('-i IN', '--in IN', "Input file. Defaults to #{DEFAULT_INPUT_FILE}.") do |x|
               args[:in] = x
