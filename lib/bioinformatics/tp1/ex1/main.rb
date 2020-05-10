@@ -6,16 +6,16 @@ require_relative 'options'
 module Bioinformatics
   module TP1
     module Ex1
-      # Calls run_return with command line arguments for input and output
+      # Read a nucleotide sequence in GenBank format, convert it to aminoacid sequence and print it out in
+      # FASTA format.
       class Main
+        # Calls run_return with command line arguments for input and output
         def run
           args = Options.new.parse
           input = args[:in]
           args[:out].write run_return(input)
         end
 
-        # Read a nucleotide sequence in GenBank format, convert it to aminoacid sequence and print it out in FASTA
-        # format.
         # Adapted from <gems-root>/bio-2.0.1/doc/Tutorial.rd.html
         def run_return(input = File.open(Options::DEFAULT_INPUT_FILE))
           ff = Bio::FlatFile.new(Bio::GenBank, input)
