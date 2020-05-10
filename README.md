@@ -1,36 +1,30 @@
 # Bioinformatics
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bioinformatics`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a project for the Bioinformatics college elective.  It's comprised of a number of exercises
+that involve sequence translation (mRNA => protein sequence), BLAST search and Multiple Sequence
+Alignment (MSA).
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'bioinformatics'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install bioinformatics
+0. [Install Ruby](https://www.ruby-lang.org/en/downloads) if your system does not include it. We
+recommend using a version manager (eg. rbenv, rvm, rvm) if you plan on installing more than one
+Ruby in your system.
+1. Clone the repo.
+1. Install the `bundler` gem which installs dependencies by running
+    ```bash
+    gem install bundler
+    ```
+1. Install dependencies by running the following on the project root:
+    ```bash
+   bundle install
+    ```
 
 ## Usage
 
-TODO: Write usage instructions here
+Each exercise is run separately and has its own arguments.  For usage information run
+```bash
+ruby lib/bioinformatics/tpX/exY/main.rb --help
+```
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/lipusal/bioinformatics.
-
+**NOTE:** Some exercises have additional non-Ruby dependencies or notes that are specified in the
+exercise's folder as a separate README.  Be sure to check them out.
