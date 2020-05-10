@@ -32,7 +32,9 @@ module Bioinformatics
         private
 
         # Get the longest amino acid sequence resulting from translating the given nucleotide sequence using
-        # all different reading frames (Open Reading Frame). Adapted from https://biorelated.wordpress.com/category/bioruby/
+        # all different reading frames (Open Reading Frame). Adapted from https://biorelated.wordpress.com/category/bioruby
+        # NOTE: This has been checked against ORFfinder (https://www.ncbi.nlm.nih.gov/orffinder) and verified
+        # to match. Make sure you set "Any sense codon" as ORF start codon if you cross-reference.
         def orf(sequence)
           aa_seqs = []
           (1..6).each do |frame|
