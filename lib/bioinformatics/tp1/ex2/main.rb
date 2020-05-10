@@ -26,6 +26,7 @@ module Bioinformatics
               out.puts hit_to_s(hit)
             end
             out.puts DIVIDER unless hits.empty?
+            File.write(File.join(__dir__, 'blast_raw.txt'), searcher.output)
           end
         end
 
