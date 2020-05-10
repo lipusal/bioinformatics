@@ -10,7 +10,7 @@ module Bioinformatics
       HSP_DIVIDER = "\n\t******************************************************************\n"
 
       # Read a FASTA sequence and perform a BLAST search on it. Output resutls.
-      class Ex2a
+      class Main
         def run
           args = Options.new.parse
           searcher = build_searcher args
@@ -79,7 +79,7 @@ module Bioinformatics
       end
 
       # Automatically run if running class directly. Based on https://stackoverflow.com/a/2249332/2333689
-      Ex2a.new.run if __FILE__ == $PROGRAM_NAME
+      Main.new.run if __FILE__ == $PROGRAM_NAME
     end
   end
 end
