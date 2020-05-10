@@ -6,6 +6,9 @@ require_relative 'options'
 module Bioinformatics
   module TP1
     module Ex2
+      DIVIDER = "----------------------------------------------------------------------\n"
+      HSP_DIVIDER = "\n\t******************************************************************\n"
+
       # Read a FASTA sequence and perform a BLAST search on it. Output resutls.
       class Ex2a
         def run
@@ -22,6 +25,7 @@ module Bioinformatics
             hits.each_with_index do |hit, _i|
               out.puts hit_to_s(hit)
             end
+            out.puts DIVIDER unless hits.empty?
           end
         end
 
@@ -32,14 +36,14 @@ module Bioinformatics
         end
 
         def hit_to_s(hit)
-          header = "Hit ##{hit.num} (#{hit.hit_id}) - #{hit.accession} #{hit.definition}"
+          header = "Hit ##{hit.num}\n#{hit.hit_id}\n#{hit.accession} #{hit.definition}"
           body = ["Length: #{hit.len}"]
-          body << "Number of identities: #{hit.identity}"
-          body << "Length of Overlapping region: #{hit.overlap}"
-          body << "Query sequence:   #{hit.query_seq}"
-          body << "Subject sequence: #{hit.target_seq}"
+          # body << "Number of identities: #{hit.identity}"
+          # body << "Length of Overlapping region: #{hit.overlap}"
+          # body << "Query sequence:   #{hit.query_seq}"
+          # body << "Subject sequence: #{hit.target_seq}"
 
-          result = header + "\n" + body.map { |line| "\t#{line}" }.join("\n")
+          result = DIVIDER + header + "\n" + body.map { |line| "#{line}" }.join("\n")
           # Iterate over HSPs
           hit.each do |hsp|
             result << hsp_to_s(hsp)
@@ -70,7 +74,7 @@ module Bioinformatics
           body << "Alignment string for subject (with gaps): #{hsp.hseq}"
           body << "Middle line:                              #{hsp.midline}"
 
-          "\n\t\t#{header}\n" + body.map { |line| "\t\t\t#{line}" }.join("\n")
+          HSP_DIVIDER + "\t#{header}\n" + body.map { |line| "\t#{line}" }.join("\n") + HSP_DIVIDER
         end
       end
 
