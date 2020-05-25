@@ -3,6 +3,7 @@
 require 'bio'
 require_relative 'options'
 require_relative '../ex1/main'
+require_relative '../../utils'
 
 module Bioinformatics
   module TP1
@@ -39,11 +40,9 @@ module Bioinformatics
           report = Bio::Blast::Report.new File.read(BLAST_RAW_FILE)
           random_hits = report.hits.sample(5)
           # ID is enclosed in [] at the beginning of the definition, extract
-          ids = random_hits.map { |h| h.definition.scan(/^\[(.+)\]/)[0][0] }
+          ids = random_hits.map { |h| Utils.extract_hit_id h }
           # Look up proteins in NCBI by ID and return them as FASTA
-          results = Bio::NCBI::REST::EFetch.protein(ids, 'fasta')
-          parsed_results = Bio::FlatFile.new(Bio::FastaFormat, StringIO.new(results))
-          parsed_results.entries
+          Utils.ncbi_protein_lookup ids
         end
       end
 
