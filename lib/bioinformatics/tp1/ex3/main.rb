@@ -9,7 +9,7 @@ module Bioinformatics
     module Ex3
       # Read multiple FASTA sequences and perform a multiple sequence alignment (MSA).
       class Main
-        BLAST_RAW_FILE = File.join __dir__, '..', 'ex2', 'blast_raw.txt'
+        BLAST_RAW_FILE = File.join __dir__, '..', 'ex2', 'blast_raw.xml'
 
         def run
           args = Options.new.parse

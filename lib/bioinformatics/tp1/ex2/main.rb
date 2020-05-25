@@ -9,7 +9,7 @@ module Bioinformatics
       DIVIDER = "----------------------------------------------------------------------\n"
       HSP_DIVIDER = "\n\t******************************************************************\n"
 
-      # Read a FASTA sequence and perform a BLAST search on it. Output resutls.
+      # Read a FASTA sequence and perform a BLAST search on it. Output results.
       class Main
         def run
           args = Options.new.parse
@@ -26,7 +26,7 @@ module Bioinformatics
               out.puts hit_to_s(hit)
             end
             out.puts DIVIDER unless hits.empty?
-            File.write(File.join(__dir__, 'blast_raw.txt'), searcher.output)
+            File.write(File.join(__dir__, 'blast_raw.xml'), searcher.output)
           end
         end
 
