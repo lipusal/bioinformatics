@@ -9,7 +9,7 @@ module Bioinformatics
     module Ex2
       class Options
         def parse
-          args = { in: nil, out: nil, local: false }
+          args = { in: nil, out: nil, local: false, blast: '' }
 
           OptionParser.new do |parser|
             parser.banner = "Usage: ruby #{File.expand_path 'main.rb'} [options]"
@@ -20,7 +20,10 @@ module Bioinformatics
             parser.on('-o OUT', '--out OUT', 'Output file. Defaults to STDOUT.') do |x|
               args[:out] = x
             end
-            parser.on('-l', '--local', 'Perform a local BLAST search rather than online. Note that this requires that the BLAST command be available.') do |x|
+            parser.on('-l', '--local', 'Perform a local BLAST search rather than online. Also see --blast.') do |x|
+              args[:local] = true
+            end
+            parser.on('-b', '--blast', 'BLAST binaries path. Useful if BLAST is not available in your PATH') do |x|
               args[:local] = true
             end
           end.parse!
