@@ -12,7 +12,7 @@ module Bioinformatics
           args = { in: DEFAULT_INPUT_FILE, out: nil, pattern: nil }
 
           OptionParser.new do |parser|
-            parser.banner = "Usage: #{File.expand_path 'main.rb'} [options]"
+            parser.banner = "Usage: ruby #{File.expand_path 'main.rb', __dir__} [options]"
 
             parser.on('-i IN', '--in IN', 'Input BLAST XML report file. Defaults to reading report from ex 2.') do |x|
               args[:in] = x

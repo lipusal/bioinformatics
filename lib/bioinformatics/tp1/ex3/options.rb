@@ -12,7 +12,7 @@ module Bioinformatics
           args = { in: nil, out: nil, mafft: 'mafft' }
 
           OptionParser.new do |parser|
-            parser.banner = "Usage: #{File.expand_path 'main.rb'} [options]"
+            parser.banner = "Usage: ruby #{File.expand_path 'main.rb', __dir__} [options]"
 
             parser.on('-i IN', '--in IN', 'Input FASTA file. Defaults to reading raw BLAST from ex 2, looking up random FASTA sequences and using that.') do |x|
               args[:in] = x

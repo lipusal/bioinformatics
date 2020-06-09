@@ -11,7 +11,7 @@ module Bioinformatics
           args = { in: nil, out: '.', sequence: nil }
 
           OptionParser.new do |parser|
-            parser.banner = "Usage: #{File.expand_path 'main.rb'} [options]"
+            parser.banner = "Usage: ruby #{File.expand_path 'main.rb', __dir__} [options]"
 
             parser.on('-i IN', '--in IN', 'Input nucleotide sequence FASTA file.') do |x|
               args[:in] = x
