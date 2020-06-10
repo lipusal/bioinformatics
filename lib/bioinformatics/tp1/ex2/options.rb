@@ -20,7 +20,7 @@ module Bioinformatics
             parser.on('-o OUT', '--out OUT', 'Output file. Defaults to STDOUT.') do |x|
               args[:out] = x
             end
-            parser.on('-l', '--local', 'Perform a local BLAST search rather than online. Note that this requires that the BLAST command be available.') do |x|
+            parser.on('-l', '--local', 'Perform a local BLAST search rather than online. Note that this requires that the blast binaries be in the PATH.') do |x|
               args[:local] = true
             end
           end.parse!

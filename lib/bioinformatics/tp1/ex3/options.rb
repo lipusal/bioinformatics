@@ -20,7 +20,7 @@ module Bioinformatics
             parser.on('-o OUT', '--out OUT', 'Output file. Defaults to STDOUT.') do |x|
               args[:out] = x
             end
-            parser.on('--mafft MAFFT', "MAFFT program path. Defaults to 'mafft'.") do |x|
+            parser.on('-m MAFFT', '--mafft MAFFT', "MAFFT program path. Defaults to 'mafft'.") do |x|
               args[:mafft] = x
             end
           end.parse!
