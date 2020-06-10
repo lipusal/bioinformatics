@@ -13,13 +13,13 @@ module Bioinformatics
           OptionParser.new do |parser|
             parser.banner = "Usage: ruby #{File.expand_path 'main.rb', __dir__} [options]"
 
-            parser.on('-i IN', '--in IN', 'Input nucleotide sequence FASTA file.') do |x|
+            parser.on('-i IN', '--in IN', 'Input nucleotide sequence FASTA file. If neither -i nor -s are provided, defaults to reading sequence from ex1 GenBank file.') do |x|
               args[:in] = x
             end
             parser.on('-o OUT', '--out OUT', 'Output directory. Defaults to cwd.') do |x|
               args[:out] = x
             end
-            parser.on('-s SEQUENCE', '--sequence SEQUENCE', 'Nucleotide sequence in FASTA format.') do |x|
+            parser.on('-s SEQUENCE', '--sequence SEQUENCE', 'Nucleotide sequence in FASTA format. If neither -i nor -s are provided, defaults to reading sequence from ex1 GenBank file.') do |x|
               args[:sequence] = x
             end
           end.parse!

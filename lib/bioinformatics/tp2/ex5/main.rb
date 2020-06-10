@@ -13,7 +13,7 @@ module Bioinformatics
       # the obtained proteins.
       # API documentation obtained from https://www.ebi.ac.uk/Tools/common/tools/help/index.html
       class Main
-        DEFAULT_GENBANK_FILE = File.join '..', '..', 'tp1', 'ex1', 'NM_002049.gbk'
+        DEFAULT_GENBANK_FILE = File.join __dir__, '..', '..', 'tp1', 'ex1', 'NM_002049.gbk'
 
         def get_sequence(args)
           if args[:in]
