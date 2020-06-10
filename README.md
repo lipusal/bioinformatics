@@ -2,7 +2,7 @@
 
 This is a project for the Bioinformatics college elective.  It's comprised of a number of exercises
 that involve sequence translation (mRNA => protein sequence), BLAST search and Multiple Sequence
-Alignment (MSA).
+Alignment (MSA) among others.
 
 ## Installation
 
@@ -21,10 +21,12 @@ Ruby in your system.
 
 ## Usage
 
-Each exercise is run separately and has its own arguments.  For usage information run
+Each exercise is run separately and has its own arguments. A README is provided
+in every exercise for a quick description of its behavior. Usage information for
+each exercise can be obtained by running:
 ```bash
 ruby lib/bioinformatics/tpX/exY/main.rb --help
 ```
 
-**NOTE:** Some exercises have additional non-Ruby dependencies or notes that are specified in the
-exercise's folder as a separate README.  Be sure to check them out.
+**NOTE:** Some exercises have additional non-Ruby dependencies or notes that are
+specified in the exercise's README.  Be sure to check them out before running.
