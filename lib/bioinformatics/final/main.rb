@@ -3,6 +3,7 @@
 require_relative 'options'
 require_relative 'convolution'
 require_relative 'spectrum'
+require_relative 'score'
 
 module Bioinformatics
   # Implementation of algorithms discussed in Chapter 4 of Bioinformatics Algorithms.
@@ -11,6 +12,7 @@ module Bioinformatics
     class Main
       def run
         # puts Spectrum.new.cyclospectrum('KVAPSCKYELEL').sort.join(' ')
+        # puts Score.new.score('NQEL', %w[0 99 113 114 128 227 257 299 355 356 370 371 484])
 
         args = Options.new.parse
 
