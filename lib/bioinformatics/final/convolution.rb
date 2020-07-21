@@ -14,6 +14,7 @@ module Bioinformatics
       # If restrict = true, only returns differences between #MAX_MASS and #MIN_MASS
       def self.convolution(spectrum, restrict = false)
         multiplicities = Hash.new { |map, key| map[key] = 0 }
+        # Sort because spectrum should contain 0 and total mass TODO what happens if 0 is not present? Can we assume the largest element is the total mass?
         spectrum.map!(&:to_i).sort!
         # Traverse the lower half of the matrix created with spectrum as rows and columns (exclude diagonal)
         (0...spectrum.length).each do |col|
