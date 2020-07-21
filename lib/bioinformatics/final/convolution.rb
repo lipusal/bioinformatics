@@ -9,8 +9,8 @@ module Bioinformatics
       MAX_MASS = 200
       MIN_MASS = 57
 
-      # Compute the convolution of a given peptide's spectrum. Return the differences ordered by descending
-      # multiplicity; every difference is given [multiplicity] times.
+      # Compute the convolution of a given peptide's spectrum. Return each difference paired with its
+      # multiplicity.
       # If restrict = true, only returns differences between #MAX_MASS and #MIN_MASS
       def self.convolution(spectrum, restrict = false)
         multiplicities = Hash.new { |map, key| map[key] = 0 }
@@ -19,7 +19,9 @@ module Bioinformatics
         (0...spectrum.length).each do |col|
           ((col + 1)...spectrum.length).each do |row|
             diff = spectrum[row] - spectrum[col]
-            next if diff <= 0
+            if diff <= 0 || (restrict && diff < MIN_MASS || diff > MAX_MASS) # Restrict masses if requested
+              next
+            end
 
             multiplicities[diff] += 1
           end
@@ -27,8 +29,13 @@ module Bioinformatics
 
         # puts multiplicities.sort_by { |_k, v| -v }.to_h # Sort by descending multiplicity
         multiplicities
+      end
+
+      # Calls #convolution and formats the output as a string.  Differences are ordered by descending
+      # multiplicity and every difference is printed [multiplicity] times.
+      def self.convolution_formatted(spectrum, restrict = false)
+        convolution(spectrum, restrict)
           .sort_by { |_k, v| -v } # Sort by descending multiplicity
-          .select { |diff, _multiplicity| !restrict || diff >= MIN_MASS && diff <= MAX_MASS } # Restrict masses if requested
           .flat_map { |diff, multiplicity| [diff] * multiplicity } # Print out each difference multiplicity times
       end
 
