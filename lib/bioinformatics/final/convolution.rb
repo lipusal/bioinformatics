@@ -40,7 +40,7 @@ module Bioinformatics
 
         puts 'Convolution: ' + result.to_a.map { |k, v| "#{k} (#{v})" }.join(', ')
         puts "Top #{m} masses by multiplicity: " + top_masses.map { |diff, _multiplicity| diff }.join(' ')
-        puts "Rosalind output (all masses by multiplicity):\n" + convolution_formatted(spectrum, restrict).join(' ')
+        puts "Rosalind output (all masses by multiplicity):\n" + convolution_formatted(spectrum, restrict)
       end
 
       # Compute the convolution of a given peptide's spectrum. Return each difference paired with its
@@ -72,6 +72,7 @@ module Bioinformatics
         convolution(spectrum, restrict)
           .sort_by { |_k, v| -v } # Sort by descending multiplicity
           .flat_map { |diff, multiplicity| [diff] * multiplicity } # Print out each difference multiplicity times
+          .join(' ')
       end
 
       # Like #convolution, but rather than returning multiplicities prints out the convolution matrix for
