@@ -12,10 +12,6 @@ module Bioinformatics
   module Final
     class Main
       def run
-        # TODO move these lines to spectrum.rb
-        # puts Spectrum.new.cyclospectrum('KVAPSCKYELEL').sort.join(' ')
-        # puts Score.new.score('NQEL', %w[0 99 113 114 128 227 257 299 355 356 370 371 484])
-
         args = Options.new.parse
 
         spectrum = (args[:spectrum] || args[:in].read.split("\n").first.chomp).split(' ')

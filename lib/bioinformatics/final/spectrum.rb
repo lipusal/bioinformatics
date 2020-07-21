@@ -28,6 +28,10 @@ module Bioinformatics
         W: 186
       }.freeze
 
+      def run
+        puts Spectrum.new.cyclospectrum('KVAPSCKYELEL').sort.join(' ')
+      end
+
       # Generate the theoretical spectrum of a given cyclic peptide.
       def cyclospectrum(peptide)
         tmp = peptide.upcase.split('').map(&:to_sym)
@@ -54,5 +58,8 @@ module Bioinformatics
           .sum
       end
     end
+
+    # Automatically run if running class directly. Based on https://stackoverflow.com/a/2249332/2333689
+    Spectrum.new.run if __FILE__ == $PROGRAM_NAME
   end
 end
