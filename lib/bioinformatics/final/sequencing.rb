@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
-require_relative 'convolution'
+require_relative 'score'
 
 module Bioinformatics
   module Final
     class Sequencing
+
+      def initialize
+        @scorer = Score.new
+      end
+
       # Implement the leaderboard-based convolution cyclopeptide sequencing algorithm.
       #
       # @param spectrum Spectrum to sequence.
@@ -16,13 +21,13 @@ module Bioinformatics
         leader = []
         until leaderboard.empty?
           leaderboard = expand(leaderboard, masses_dictionary)
-          leaderboard.each do |peptide|
+          leaderboard.each_with_index do |peptide, index|
             if mass(peptide) == parent_mass
               if score(peptide, spectrum) > score(leader, spectrum)
                 leader = peptide
               end
             elsif mass(peptide) > parent_mass
-              # TODO remove peptide from leaderboard
+              leaderboard.delete_at index
             end
           end
           leaderboard = trim(leaderboard, spectrum, leaderboard_size)
@@ -48,7 +53,10 @@ module Bioinformatics
       private
 
       def score(peptide, spectrum)
-        # TODO
+        # FIXME this doesn't work because the problem inputs masses rather than aminoacids, and I am only given
+        #   a table of 20 aminoacids, not the full 100+, so there are some masses I can't translate for the
+        #   scorer.
+        @scorer.score(peptide, spectrum)
       end
 
       # Append every mass in the given masses dictionary to every peptide.

@@ -4,6 +4,7 @@ require_relative 'options'
 require_relative 'convolution'
 require_relative 'spectrum'
 require_relative 'score'
+require_relative 'sequencing'
 
 module Bioinformatics
   # Implementation of algorithms discussed in Chapter 4 of Bioinformatics Algorithms.
@@ -20,9 +21,12 @@ module Bioinformatics
         spectrum = (args[:spectrum] || args[:in].read.split("\n").first.chomp).split(' ')
         out = args[:out]
 
-        # TODO NOW orchestrate ConvolutionCyclopeptideSequencing
+        # Orchestrate ConvolutionCyclopeptideSequencing
+        conv = Convolution.new
 
-        convolution = Convolution.new.convolution(spectrum, true)
+        convolution = conv.convolution(spectrum, true)
+        masses_dictionary = conv.get_top_multiplicities(convolution, args[:top_masses]).map { |diff, _mult| diff }
+        puts Sequencing.new.ConvolutionCyclopeptideSequencing(spectrum, masses_dictionary, args[:leaderboard_size]).join('-')
       end
     end
 
