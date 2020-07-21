@@ -24,6 +24,7 @@ GEM
     rspec-support (3.9.2)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
