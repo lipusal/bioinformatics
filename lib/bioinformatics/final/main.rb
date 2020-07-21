@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'convolution'
 require_relative 'options'
+require_relative 'convolution'
+require_relative 'spectrum'
 
 module Bioinformatics
   # Implementation of algorithms discussed in Chapter 4 of Bioinformatics Algorithms.
@@ -9,6 +10,8 @@ module Bioinformatics
   module Final
     class Main
       def run
+        # puts Spectrum.new.cyclospectrum('KVAPSCKYELEL').sort.join(' ')
+
         args = Options.new.parse
 
         spectrum = (args[:spectrum] || args[:in].read.split("\n").first.chomp).split(' ')
